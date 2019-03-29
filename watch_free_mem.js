@@ -23,8 +23,8 @@ function check_free_mem(){
 
       var usage = used/total
       if(usage > CUTOFF)
-        // execute('sudo reboot')
-        execute('service apache2 restart', ()=>{console.log('bye?')})
+        execute('sudo reboot')
+        // execute('service apache2 restart', ()=>{console.log('bye?')})
 
       console.log(used/total)
 
