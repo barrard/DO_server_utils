@@ -15,7 +15,7 @@ function check_free_mem(){
     var total = stdout.split('\n')[1]
     console.log({total})
 
-    execute("free  | awk '{print $2}' ", (stdout)=>{
+    execute("free  | awk '{print $3}' ", (stdout)=>{
       /* get used and or free mem */
       console.log(stdout)
       var used = stdout.split('\n')[1]
@@ -23,17 +23,11 @@ function check_free_mem(){
 
       var usage = used/total
       if(usage > CUTOFF)
-        execute('sudo reboot')
+        execute('sudo reboot', (stdout)=>console.log(stdout))
         // execute('service apache2 restart', ()=>{console.log('bye?')})
 
       console.log(used/total)
-
-
     })
-
-
-
-
   })
 }
 
